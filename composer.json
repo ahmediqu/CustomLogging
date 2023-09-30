@@ -28,7 +28,7 @@
             "CustomLogCreator\\CustomLogging\\Tests\\": "tests"
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "providers": [
@@ -38,5 +38,6 @@
                 "CustomLogging": "CustomLogCreator\\CustomLogging\\Facades\\CustomLogging"
             }
         }
-    }
+    },
+    "prefer-stable": true
 }
