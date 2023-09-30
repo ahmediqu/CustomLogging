@@ -2,7 +2,6 @@
     "name": "customlogcreator/customlogging",
     "description": "The Laravel Custom Logging Package is a package that enhances your Laravel application's logging capabilities. It provides options to create custom log handlers, organize log files into folders, and upload logs to an Amazon S3 bucket.",
     "license": "MIT",
-    "version": "1.1.0",
     "authors": [
         {
             "name": "Iqbal hossain",
@@ -13,7 +12,7 @@
     "homepage": "https://github.com/customlogcreator/customlogging",
     "keywords": ["Laravel", "CustomLogging"],
     "require": {
-        "illuminate/support": "~5|~10"
+        "illuminate/support": "~9|~10"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",
@@ -29,8 +28,7 @@
             "CustomLogCreator\\CustomLogging\\Tests\\": "tests"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
