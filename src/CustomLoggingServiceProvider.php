@@ -14,18 +14,29 @@ class CustomLoggingServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $serverName = request()->server('SERVER_NAME');
-        
+        // Get the folder name and path name from configuration
+        $folderName = config('customlogging.folder_name');
+        $pathName = config('customlogging.path_name');
+
+        // Construct the log folder path
+        $logFolderPath = storage_path('logs/' . ($folderName ? $folderName . '/' : '') . ($pathName ?: $serverName . '_' . php_sapi_name()));
+
+        // Create log folder if it doesn't exist
+        if (!file_exists($logFolderPath)) {
+            mkdir($logFolderPath, 0755, true); // Create the folder with permissions 0755
+        }
+
+        // Configure the custom log channel
         config([
             'logging.channels.dynamic_logs' => [
                 'driver' => 'daily',
-                'path' => storage_path('logs/' .
-                (config('customlogging.is_folder') ? config('customlogging.folder_name').'/' : '') .
-                (config('customlogging.path_name') ?: $serverName.'_'.php_sapi_name()).'.log'),
+                'path' => $logFolderPath . '.log', // Removed the extra folder name
 
                 'level' => 'info',
                 'tap' => [],
             ],
         ]);
+
 
 
        // s3 logs upload
