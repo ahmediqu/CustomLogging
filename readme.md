@@ -18,7 +18,12 @@ $ composer require customlogcreator/customlogging
 ``` bash
 $ php artisan vendor:publish --tag=customlogging
 ```
+### added app/config.php
 
+```
+$ CustomLogCreator\CustomLogging\CustomLoggingServiceProvider::class,
+
+```
 ### Usage Instructions
 ```
 Log::channel('dynamic_logs')->info('Log message here');
