@@ -15,11 +15,12 @@ class CustomLoggingServiceProvider extends ServiceProvider
     {
         $serverName = request()->server('SERVER_NAME');
         // Get the folder name and path name from configuration
-        $folderName = config('customlogging.folder_name');
-        $pathName = config('customlogging.path_name');
+        $is_directory =  config('customlogging.is_directory');
+        $directoryName = config('customlogging.directory_name');
+        $pathName = config('customlogging.file_name');
 
         // Construct the log folder path
-        $logFolderPath = storage_path('logs/' . ($folderName ? $folderName . '/' : '') . ($pathName ?: $serverName . '_' . php_sapi_name()));
+        $logFolderPath = storage_path('logs/' . ($is_directory ? $directoryName . '/' : ''));
 
         // Create log folder if it doesn't exist
         if (!file_exists($logFolderPath)) {
@@ -30,8 +31,7 @@ class CustomLoggingServiceProvider extends ServiceProvider
         config([
             'logging.channels.dynamic_logs' => [
                 'driver' => 'daily',
-                'path' => $logFolderPath . '.log', // Removed the extra folder name
-
+                'path' =>  $logFolderPath . ($pathName ? $serverName . '_' . php_sapi_name().'.log' : ''), // Removed the extra folder name
                 'level' => 'info',
                 'tap' => [],
             ],

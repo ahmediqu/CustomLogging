@@ -18,7 +18,7 @@ $ composer require customlogcreator/customlogging
 ``` bash
 $ php artisan vendor:publish --tag=customlogging
 ```
-### added app/config.php
+### added in providers
 
 ```
 $ CustomLogCreator\CustomLogging\CustomLoggingServiceProvider::class,
@@ -52,10 +52,10 @@ In the custom-logging.php configuration file, you can customize the behavior of 
 
 ```
 return [
-    'namespace' => 'App\CustomLogging',
-    'is_folder' => true,
-    'folder_name' => '',
-    'path_name' => '',
+    
+    'is_directory' => true, // create new directory in logs folder
+    'directory_name' => '', // logs/01-01-2023/01-01-202.log
+    'path_name' => '', // 01-01-2023.log
     'is_upload_s3_bucket' => false,
     'aws_destination_path' => '',
 ];

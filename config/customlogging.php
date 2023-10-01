@@ -6,13 +6,7 @@
  * @return array
  */
 return [
-    /**
-     * Namespace
-     *
-     * The namespace where custom log handlers and formatters are located.
-     * You can specify your custom log handler classes here.
-     */
-    'namespace' => 'App\CustomLogging',
+    
 
     /**
      * Is Folder
@@ -20,7 +14,7 @@ return [
      * Indicates whether a folder structure should be used for organizing log files.
      * If set to `true`, log files will be organized into folders.
      */
-    'is_folder' => true,
+    'is_directory' => true,
 
     /**
      * Folder Name
@@ -28,7 +22,7 @@ return [
      * The name of the folder where log files will be stored when 'is_folder' is set to `true`.
      * Leave it empty to use the default log folder.
      */
-    'folder_name' => '',
+    'directory_name' => '',
 
     /**
      * Path Name
@@ -36,7 +30,7 @@ return [
      * The path name where log files will be stored when 'is_folder' is set to `false`.
      * Leave it empty to use the default Laravel log path.
      */
-    'path_name' => '',
+    'file_name' => '',
 
     /**
      * Is Upload to S3 Bucket
